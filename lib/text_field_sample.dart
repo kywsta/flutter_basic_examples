@@ -14,18 +14,25 @@ class MyTextFieldExample extends StatefulWidget {
 class _MyTextFieldExampleState extends State<MyTextFieldExample> {
   late TextEditingController _nameController;
   late TextEditingController _emailController;
-  String _displayText = '';
+
+  String _name = 'John Doe';
+  String _email = 'john@example.com';
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
+
+    _nameController.text = _name;
+    _emailController.text = _email;
+
     _nameController = TextEditingController();
     _emailController = TextEditingController();
 
     // Listen to changes
-    _nameController.addListener(_onTextChanged);
+    _nameController.addListener(_onNameTextChanged);
+    _emailController.addListener(_onEmailTextChanged);
   }
 
   @override
@@ -71,7 +78,8 @@ class _MyTextFieldExampleState extends State<MyTextFieldExample> {
                 ),
               ),
               const SizedBox(height: 16),
-              Text(_displayText, style: const TextStyle(fontSize: 16)),
+              Text('Name: ${_nameController.text}'),
+              Text('Email: ${_emailController.text}'),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,9 +105,15 @@ class _MyTextFieldExampleState extends State<MyTextFieldExample> {
     );
   }
 
-  void _onTextChanged() {
+  void _onNameTextChanged() {
     setState(() {
-      _displayText = 'Name: ${_nameController.text}';
+      _name = _nameController.text;
+    });
+  }
+
+  void _onEmailTextChanged() {
+    setState(() {
+      _email = _emailController.text;
     });
   }
 

@@ -14,10 +14,7 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MyStatelessWidget(),
-              MyStatefulWidget(),
-            ],
+            children: [MyStatelessWidget(), MyStatefulWidget()],
           ),
         ),
       ),
@@ -30,7 +27,7 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Building MyStatelessWidget');
+    debugPrint('Building MyStatelessWidget');
     return const Text('This widget never changes');
   }
 }
@@ -53,15 +50,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print('Building MyStatefulWidget');
+    debugPrint('Building MyStatefulWidget');
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(_text),
-        ElevatedButton(
-          onPressed: _updateText,
-          child: const Text('Update'),
-        ),
+        ElevatedButton(onPressed: _updateText, child: const Text('Update')),
       ],
     );
   }
