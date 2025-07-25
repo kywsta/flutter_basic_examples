@@ -69,10 +69,6 @@ class BasicSliverAppBarExample extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.navigate_next),
-      ),
     );
   }
 }
