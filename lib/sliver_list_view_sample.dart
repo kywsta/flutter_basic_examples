@@ -16,7 +16,7 @@ class BasicSliverAppBarExample extends StatelessWidget {
             title: const Text('Basic SliverAppBar'),
             expandedHeight: 200,
             floating: true,
-            pinned: true,
+            pinned: false,
             snap: false,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
@@ -40,23 +40,21 @@ class BasicSliverAppBarExample extends StatelessWidget {
               ),
             ),
           ),
-          SliverSafeArea(
-            sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 4 / 3,
-              ),
-              delegate: SliverChildBuilderDelegate((context, index) {
-                debugPrint('Building grid item $index');
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.teal[100 * (index % 9)],
-                  child: Text('grid item $index'),
-                );
-              }, childCount: 15),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 4 / 3,
             ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              debugPrint('Building grid item $index');
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.teal[100 * (index % 9)],
+                child: Text('grid item $index'),
+              );
+            }, childCount: 15),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
