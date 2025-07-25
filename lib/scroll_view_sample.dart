@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic_examples/widgets/product_card.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(home: MyScrollViewExample()));
@@ -10,6 +11,7 @@ class MyScrollViewExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text('ScrollView Example')),
       body: SafeArea(
@@ -28,12 +30,13 @@ class MyScrollViewExample extends StatelessWidget {
               Divider(),
               ...List.generate(
                 20,
-                (index) => ListTile(
-                  visualDensity: VisualDensity.compact,
-                  contentPadding: EdgeInsets.zero,
-                  leading: Icon(Icons.check_circle),
-                  title: Text('Item $index'),
-                  trailing: Icon(Icons.arrow_forward),
+                (index) => ProductCard(
+                  title: "Product $index",
+                  description: "This is the description for product $index",
+                  price: 100.0,
+                  onTap: () {},
+                  onAdd: () {},
+                  onRemove: () {},
                 ),
               ),
               Divider(),

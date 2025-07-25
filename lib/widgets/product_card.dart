@@ -20,6 +20,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Building ProductCard: $title");
     final theme = Theme.of(context);
 
     return Card(
