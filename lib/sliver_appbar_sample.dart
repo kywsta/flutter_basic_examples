@@ -14,7 +14,22 @@ class BasicSliverAppBarExample extends StatelessWidget {
         slivers: [
           SliverAppBar(
             title: const Text('Basic SliverAppBar'),
+            // Height when expanded
             expandedHeight: 200,
+
+            // Floating: AppBar appears as soon as you scroll up
+            floating: true,
+
+            // Pinned: AppBar remains visible when collapsed
+            pinned: true,
+
+            // Snap: AppBar snaps open/closed when floating
+            snap: true,
+
+            // Stretch: Allows over-scroll stretching
+            stretch: false,
+
+            // Flexible space bar for expanded content
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: const BoxDecoration(
@@ -26,15 +41,24 @@ class BasicSliverAppBarExample extends StatelessWidget {
                 ),
                 child: const SafeArea(
                   child: Center(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.person),
-                      ),
-                      title: Text('Flexible Space'),
-                      subtitle: Text('Subtitle for Flexible Space'),
+                    child: Text(
+                      'Flexible Space',
+                      style: TextStyle(fontSize: 18),
                     ),
                   ),
+                ),
+              ),
+            ),
+
+            // Bottom widget (like TabBar)
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(48),
+              child: Container(
+                height: 48,
+                alignment: Alignment.center,
+                child: const Text(
+                  'Bottom Widget',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
