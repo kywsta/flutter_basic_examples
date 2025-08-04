@@ -12,8 +12,8 @@ class MyTextFieldExample extends StatefulWidget {
 }
 
 class _MyTextFieldExampleState extends State<MyTextFieldExample> {
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   String _name = 'John Doe';
   String _email = 'john@example.com';
@@ -26,9 +26,6 @@ class _MyTextFieldExampleState extends State<MyTextFieldExample> {
 
     _nameController.text = _name;
     _emailController.text = _email;
-
-    _nameController = TextEditingController();
-    _emailController = TextEditingController();
 
     // Listen to changes
     _nameController.addListener(_onNameTextChanged);
@@ -51,6 +48,7 @@ class _MyTextFieldExampleState extends State<MyTextFieldExample> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
+          autovalidateMode: AutovalidateMode.always,
           child: Column(
             children: [
               TextField(
