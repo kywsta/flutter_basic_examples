@@ -14,6 +14,7 @@ class BasicSliverAppBarExample extends StatelessWidget {
         slivers: [
           SliverAppBar(
             title: const Text('Basic SliverAppBar'),
+
             // Height when expanded
             expandedHeight: 200,
 
@@ -27,7 +28,7 @@ class BasicSliverAppBarExample extends StatelessWidget {
             snap: true,
 
             // Stretch: Allows over-scroll stretching
-            stretch: false,
+            stretch: true,
 
             // Flexible space bar for expanded content
             flexibleSpace: FlexibleSpaceBar(
@@ -63,16 +64,14 @@ class BasicSliverAppBarExample extends StatelessWidget {
               ),
             ),
           ),
-          SliverSafeArea(
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                debugPrint('Building list item $index');
-                return ListTile(
-                  title: Text('Item $index'),
-                  subtitle: Text('Subtitle for item $index'),
-                );
-              }, childCount: 50),
-            ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              debugPrint('Building list item $index');
+              return ListTile(
+                title: Text('Item $index'),
+                subtitle: Text('Subtitle for item $index'),
+              );
+            }, childCount: 50),
           ),
         ],
       ),
